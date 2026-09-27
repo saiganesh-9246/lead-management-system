@@ -219,9 +219,9 @@ export function renderLeadsView(container, state, initialFilter = {}) {
                   </td>
                 </tr>
               ` : filteredLeads.map(lead => {
-                const isSelected = selectedLeadIds.has(lead.id);
-                const roleMeta = getRoleMeta(lead.assignedRole || lead.assignedTo);
-                return `
+      const isSelected = selectedLeadIds.has(lead.id);
+      const roleMeta = getRoleMeta(lead.assignedRole || lead.assignedTo);
+      return `
                   <tr data-lead-id="${lead.id}">
                     <td style="text-align: center;">
                       <input type="checkbox" class="lead-checkbox" data-id="${lead.id}" ${isSelected ? 'checked' : ''} />
@@ -287,7 +287,7 @@ export function renderLeadsView(container, state, initialFilter = {}) {
                     </td>
                   </tr>
                 `;
-              }).join('')}
+    }).join('')}
             </tbody>
           </table>
         </div>
@@ -354,7 +354,7 @@ export function renderLeadsView(container, state, initialFilter = {}) {
     // Export CSV
     container.querySelector('#btn-export-csv')?.addEventListener('click', () => {
       const leads = getFilteredLeads();
-      exportToCsv(leads, `leads_export_${new Date().toISOString().slice(0,10)}.csv`);
+      exportToCsv(leads, `leads_export_${new Date().toISOString().slice(0, 10)}.csv`);
       toast.success('Export Successful', `Exported ${leads.length} leads to CSV.`);
     });
 
