@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Lead Management System (CRM) - Sales pipeline tracking, lead scoring, Kanban board, and conversion analytics.">
+  <title>Lead Manager CRM | Sales & Pipeline Tracking</title>
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Application Stylesheets -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/kanban.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+
+  <div id="app">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="brand-logo">
+          <div class="brand-icon">⚡</div>
+          <div>
+            <span style="letter-spacing: -0.02em;">LEAD <span style="color: var(--primary);">MANAGER</span></span>
+            <span class="brand-subtitle">CRM & Sales Pipeline</span>
+          </div>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section-title">Core Management</div>
+        
+        <div class="nav-item active" data-view="dashboard" id="nav-dashboard">
+          <span style="font-size: 1.1rem;">📊</span>
+          <span>Dashboard</span>
+        </div>
+
+        <div class="nav-item" data-view="leads" id="nav-leads">
+          <span style="font-size: 1.1rem;">👥</span>
+          <span>All Leads</span>
+          <span class="nav-badge" id="badge-nav-leads">8</span>
+        </div>
+
+        <div class="nav-item" data-view="kanban" id="nav-kanban">
+          <span style="font-size: 1.1rem;">📋</span>
+          <span>Pipeline Kanban</span>
+        </div>
+
+        <div class="nav-section-title">Sales Operations</div>
+
+        <div class="nav-item" data-view="followups" id="nav-followups">
+          <span style="font-size: 1.1rem;">⏱️</span>
+          <span>Follow-up Tasks</span>
+          <span class="nav-badge" id="badge-nav-followups" style="background-color: #f59e0b; color: white;">3</span>
+        </div>
+
+        <div class="nav-item" data-view="reports" id="nav-reports">
+          <span style="font-size: 1.1rem;">📈</span>
+          <span>Reports & ROI</span>
+        </div>
+
+        <div class="nav-section-title">Preferences</div>
+
+        <div class="nav-item" data-view="profile" id="nav-profile">
+          <span style="font-size: 1.1rem;">⚙️</span>
+          <span>Profile & Settings</span>
+        </div>
+      </nav>
+
+      <!-- Sidebar Footer User Profile -->
+      <div class="sidebar-footer">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+          <div class="sidebar-user-card" id="sidebar-user-toggle" style="cursor: pointer; flex: 1;" title="View user profile">
+            <div class="user-avatar" id="sidebar-user-avatar">RS</div>
+            <div class="user-info">
+              <div class="user-name" id="sidebar-user-name">Rahul Sharma</div>
+              <div class="user-role" id="sidebar-user-role">Senior Sales Lead</div>
+            </div>
+          </div>
+          <button class="btn btn-sm btn-icon btn-outline" id="btn-sidebar-logout" title="Sign Out" style="color: var(--text-muted);">
+            🚪
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-wrapper">
+      <!-- Top Navigation Bar -->
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="menu-toggle-btn" id="menu-toggle" aria-label="Toggle Menu">
+            ☰
+          </button>
+          <div class="page-title-group">
+            <h1 id="topbar-page-title">Sales Dashboard</h1>
+            <p id="topbar-page-subtitle">Overview of lead conversion rates & pipeline health</p>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <!-- Global Search Input -->
+          <div class="topbar-search">
+            <span class="topbar-search-icon">🔍</span>
+            <input type="text" id="top-global-search" placeholder="Search leads & press Enter..." />
+          </div>
+
+          <!-- Dark/Light Mode Switcher -->
+          <button class="btn btn-icon btn-outline" id="btn-toggle-theme" title="Toggle Dark/Light Mode">
+            🌙
+          </button>
+
+          <!-- Primary Add Lead CTA -->
+          <button class="btn btn-primary" id="btn-top-add-lead">
+            <span>+</span> Add Lead
+          </button>
+
+          <!-- Sign Out Button in Topbar -->
+          <button class="btn btn-sm btn-outline" id="btn-top-logout" title="Sign Out">
+            Sign Out
+          </button>
+        </div>
+      </header>
+
+      <!-- Scrollable Main Viewport -->
+      <div class="content-viewport" id="content-viewport">
+        <!-- Rendered dynamically by Javascript Modules -->
+      </div>
+    </main>
+  </div>
+
+  <!-- Dedicated Fullscreen Auth Container (Login / Register) -->
+  <div id="auth-root" style="display: none;"></div>
+
+  <!-- Global Modal Root Container -->
+  <div id="global-modal-root"></div>
+
+  <!-- Main JavaScript App Entry Point -->
+  <script type="module" src="js/app.js"></script>
+  <script>
+    // Quick shortcut: clicking sidebar user opens profile
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('sidebar-user-toggle')?.addEventListener('click', () => {
+        window.CRMApp?.navigateTo('profile');
+      });
+    });
+  </script>
+</body>
+</html>
